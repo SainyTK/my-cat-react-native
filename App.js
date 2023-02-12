@@ -1,20 +1,33 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { View, Text, Image, TouchableOpacity } from 'react-native'
+import Cat, { Cat2 as CCC, Cat3 } from './components/Cat'
+
+const CAT = "https://cataas.com/cat"
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  // let count = 1;
+  const [count, setCount] = useState(1)
+
+  const handlePress = () => {
+    // count = count + 1;
+    setCount(count + 1)
+  }
+
+  return (
+    <View>
+
+      <TouchableOpacity onPress={handlePress}>
+        <Image source={{ url: CAT }} style={{ width: 300, height: 300 }} />
+      </TouchableOpacity>
+
+      <Text style={{ textAlign: 'center' }}>{count}</Text>
+
+      <Cat abc={"ABCDE"} />
+      <CCC />
+      <Cat3 />
+
+    </View>
+  )
+
+}
